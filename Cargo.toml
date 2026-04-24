@@ -1,0 +1,27 @@
+[package]
+name = "rustclust"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.2.1", features = ["derive"] }
+hdf5 = "0.8.1"
+memmap2 = "0.9"
+rayon = "1.7"
+fastrand = "2.0"
+[dev-dependencies]
+criterion = "0.3"
+
+[profile.release]
+opt-level = 3
+debug = false
+# split-debuginfo = '...'  # Platform-specific.
+debug-assertions = false
+overflow-checks = false
+lto = true
+panic = 'unwind'
+incremental = false
+rpath = false
+codegen-units = 1  # Forces the compiler to look at everything as one piece
